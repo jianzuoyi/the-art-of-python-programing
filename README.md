@@ -84,3 +84,17 @@ enumerate
 当循环需要返回索引号是使用enumerate，比用循环变量方便
 for (index, feature) in enumerate(gb_record.features) :
 
+Python: 保存文件
+# 序列化保存
+def writefile(fname, s):
+          with open(path.join(outdir, fname), 'w') as fh: fh.write(s)
+
+
+info = {}
+     info['params'] = params
+     info['argv'] = sys.argv
+     info['env_id'] = env.spec.id
+     writefile('info.json', json.dumps(info))
+
+# 保存对象
+writefile('agent-%.4i.pkl'%i, str(pickle.dumps(agent, -1)))
